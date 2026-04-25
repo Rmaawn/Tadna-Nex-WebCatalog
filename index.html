@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tadana Next</title>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -10,14 +10,10 @@
 
 <div class="container">
 
-  <img 
-  src="assets/img/logo.png" 
-  class="logo" 
-  alt="لوگو تادنا نکس" 
-  title="Tadana Next Logo">
+  <img src="assets/img/logo.png" class="logo" alt="لوگو Tadana Next" loading="eager" decoding="async">
 
   <div class="video-box">
-    <video autoplay muted loop>
+    <video id="video" class="video" autoplay muted loop playsinline>
       <source src="assets/video/intro.mp4" type="video/mp4">
     </video>
   </div>
@@ -25,12 +21,12 @@
   <div id="services" class="services"></div>
 
   <footer>
-    © تمامی حقوق برای Tadana Next محفوظ است
+    © تمامی حقوق متعلق به Tadana Next است
   </footer>
 
 </div>
 
-<script src="data.js"></script>
+<script src="assets/js/data.js"></script>
 <script src="assets/js/app.js"></script>
 
 </body>

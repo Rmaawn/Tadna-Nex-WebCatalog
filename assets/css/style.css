@@ -1,80 +1,74 @@
-/* ================= FONT ================= */
 @font-face {
   font-family: 'Vazirmatn';
   src: url("../fonts/Vazirmatn-Regular.woff2") format("woff2");
   font-weight: 400;
-  font-style: normal;
-  font-display: swap;
 }
 
 @font-face {
   font-family: 'Vazirmatn';
   src: url("../fonts/Vazirmatn-Bold.woff2") format("woff2");
   font-weight: 700;
-  font-style: normal;
-  font-display: swap;
 }
 
-/* ================= RESET ================= */
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
-/* ================= BODY ================= */
 body {
+  margin: 0;
   font-family: 'Vazirmatn', sans-serif;
   background: radial-gradient(circle at top, #0f172a, #020617);
-  color: #ffffff;
-  line-height: 1.8;
-  -webkit-font-smoothing: antialiased;
+  color: white;
 }
 
-/* ================= CONTAINER ================= */
 .container {
   max-width: 1200px;
   margin: auto;
-  text-align: center;
   padding: 40px 20px;
+  text-align: center;
 }
 
-/* ================= LOGO ================= */
 .logo {
   width: 140px;
-  margin-bottom: 20px;
-  animation: fadeIn 1s ease;
 }
 
-/* ================= VIDEO ================= */
 .video-box {
   margin: 30px auto;
-  width: 100%;
   max-width: 900px;
   border-radius: 20px;
   overflow: hidden;
-
-  box-shadow: 0 20px 80px rgba(0,0,0,0.6);
-  border: 1px solid rgba(255,255,255,0.08);
 }
 
 video {
   width: 100%;
-  display: block;
 }
 
-/* ================= SERVICES GRID ================= */
+/* GRID */
 .services {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  margin-top: 50px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-top: 40px;
 }
 
-/* ================= CARD ================= */
+/* تبلت */
+@media (max-width: 1024px) {
+  .services {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* موبایل */
+@media (max-width: 600px) {
+  .services {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* CARD */
 .card {
-  padding: 22px;
-  border-radius: 18px;
+  border-radius: 20px;
+  overflow: hidden;
 
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.08);
@@ -82,69 +76,110 @@ video {
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
 
-  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-
+  transition: 0.3s;
   cursor: pointer;
-  transition: all 0.35s ease;
-
-  font-weight: 500;
 }
 
-/* Hover حرفه‌ای */
 .card:hover {
-  transform: translateY(-10px) scale(1.03);
-  background: rgba(255,255,255,0.08);
+  transform: translateY(-10px) scale(1.02);
   box-shadow: 0 20px 60px rgba(0,0,0,0.6);
 }
 
-/* کلیک */
-.card:active {
-  transform: scale(0.98);
+/* IMAGE */
+.card-image {
+  height: 160px;
 }
 
-/* ================= TITLE ================= */
-h1 {
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* TEXT */
+.card-content {
+  padding: 15px;
+}
+
+.card-content h3 {
   font-weight: 700;
-  margin-bottom: 20px;
+  font-size: 16px;
 }
 
-/* ================= FOOTER ================= */
-footer {
-  margin-top: 80px;
-  opacity: 0.5;
-  font-size: 14px;
+
+/* ===== SERVICE PAGE LAYOUT ===== */
+/* .service-layout {
+  display: flex;
+  gap: 30px;
+  margin-top: 40px;
+  align-items: flex-start;
 }
 
-/* ================= ANIMATIONS ================= */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.service-content {
+  flex: 1;
+  text-align: right;
 }
 
-/* ================= SAFARI FALLBACK ================= */
-@supports not ((backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px))) {
-  .card {
-    background: rgba(255,255,255,0.08);
-  }
+.service-video {
+  width: 400px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
 }
 
-/* ================= RESPONSIVE ================= */
+.service-video video {
+  width: 100%;
+  display: block;
+} */
+
+/* زیرخدمات */
+#subservices {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* دکمه نهایی */
+.final-btn {
+  margin-top: 40px;
+  padding: 16px;
+  border-radius: 14px;
+  text-align: center;
+  cursor: pointer;
+
+  background: linear-gradient(135deg, #6366f1, #22c55e);
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+
+  transition: 0.3s;
+}
+
+.final-btn:hover {
+  transform: scale(1.05);
+}
+
+/* موبایل */
 @media (max-width: 768px) {
-  .container {
-    padding: 30px 15px;
+  .service-layout {
+    flex-direction: column;
   }
 
-  .logo {
-    width: 110px;
+  .service-video {
+    width: 100%;
   }
 
-  .card {
-    padding: 18px;
+  #subservices {
+    grid-template-columns: 1fr;
   }
+}
+
+footer {
+  margin-top: 60px;
+  opacity: 0.5;
 }
