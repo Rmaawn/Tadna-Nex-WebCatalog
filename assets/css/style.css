@@ -108,33 +108,7 @@ video {
 
 
 /* ===== SERVICE PAGE LAYOUT ===== */
-/* .service-layout {
-  display: flex;
-  gap: 30px;
-  margin-top: 40px;
-  align-items: flex-start;
-}
 
-.service-content {
-  flex: 1;
-  text-align: right;
-}
-
-.service-video {
-  width: 400px;
-  border-radius: 20px;
-  overflow: hidden;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-}
-
-.service-video video {
-  width: 100%;
-  display: block;
-} */
 
 /* زیرخدمات */
 #subservices {
@@ -178,6 +152,77 @@ video {
     grid-template-columns: 1fr;
   }
 }
+
+.lead-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.lead-box {
+  width: 100%;
+  max-width: 420px;
+  background: #020617;
+  border-radius: 20px;
+  padding: 25px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.hidden {
+  display: none;
+}
+
+.lead-input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  margin-top: 10px;
+}
+
+.lead-btn {
+  margin-top: 20px;
+  padding: 14px;
+  width: 100%;
+  border-radius: 12px;
+  cursor: pointer;
+  background: linear-gradient(135deg,#6366f1,#22c55e);
+  border: none;
+  color: white;
+  font-weight: bold;
+}
+
+.lead-options {
+  display: grid;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.lead-option {
+  padding: 12px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.05);
+  cursor: pointer;
+}
+
+.intro-box {
+  margin-top: 20px;
+  background: rgba(255,255,255,0.05);
+  padding: 20px;
+  border-radius: 16px;
+  line-height: 1.8;
+}
+
+.main-video {
+  margin-top: 25px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+}
+
+    
 
 footer {
   margin-top: 60px;

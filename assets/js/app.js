@@ -108,3 +108,92 @@ service.subs.forEach(sub => {
     title.innerText = "سرویس پیدا نشد";
   }
 }
+
+// =====================
+// LEAD FORM ENGINE
+// =====================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const modal = document.getElementById("lead-modal");
+  const content = document.getElementById("lead-content");
+
+  if (!modal || !content) return;
+
+  // اگر قبلا پر شده → کلا حذف
+  if (localStorage.getItem("lead_done") === "1") {
+    modal.remove();
+    return;
+  }
+
+  const STEPS = [
+    { key: "name", type: "input", label: "نام و نام خانوادگی:" },
+    { key: "phone", type: "input", label: "شماره تماس:" },
+    { key: "city", type: "select", label: "شهر:", options: ["تهران","مشهد","اصفهان","شیراز","سایر"] },
+    { key: "biz", type: "select", label: "نوع کسب‌وکار:", options: ["فروشگاهی","خدماتی","استارتاپ","پزشکی","سایر"] },
+    { key: "budget", type: "select", label: "بودجه:", options: ["کمتر از ۵۰","۵۰ تا ۱۵۰","۱۵۰ تا ۵۰۰","بالای ۵۰۰","نیاز به مشاوره"] },
+    { key: "goal", type: "input", label: "هدفت چیه؟" }
+  ];
+
+  let step = 0;
+  let data = {};
+
+  function render() {
+    if (step >= STEPS.length) return finish();
+
+    const s = STEPS[step];
+
+    if (s.type === "input") {
+      content.innerHTML = `
+        <h3>${s.label}</h3>
+        <input class="lead-input" id="lead-input"/>
+        <button class="lead-btn" id="nextBtn">ادامه</button>
+      `;
+
+      document.getElementById("nextBtn").onclick = () => {
+        const val = document.getElementById("lead-input").value.trim();
+        if (!val) return;
+        data[s.key] = val;
+        step++;
+        render();
+      };
+    }
+
+    if (s.type === "select") {
+      content.innerHTML = `
+        <h3>${s.label}</h3>
+        <div class="lead-options">
+          ${s.options.map(o => `<div class="lead-option">${o}</div>`).join("")}
+        </div>
+      `;
+
+      document.querySelectorAll(".lead-option").forEach(el => {
+        el.onclick = () => {
+          data[s.key] = el.innerText;
+          step++;
+          render();
+        };
+      });
+    }
+  }
+
+  function finish() {
+    localStorage.setItem("lead_done", "1");
+    localStorage.setItem("lead_data", JSON.stringify(data));
+
+    content.innerHTML = `
+      <h3>✅ ثبت شد</h3>
+      <p>به زودی با شما تماس میگیریم</p>
+      <button class="lead-btn" id="enterSite">ورود به سایت</button>
+    `;
+
+    document.getElementById("enterSite").onclick = () => {
+      modal.remove();
+    };
+  }
+
+  // نمایش
+  modal.classList.remove("hidden");
+  render();
+
+});
